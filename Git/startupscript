@@ -1,0 +1,62 @@
+#!/bin/bash
+
+# Function to run a Docker container
+run_container() {
+  read -p "Enter the container name:" container_name
+  read -p "Enter the image name:" image_name
+  docker run -d --name $container_name $image_name
+}
+
+# Function to start a service
+start_service() {
+  read -p "Enter the service name:" service_name
+  sudo systemctl start $service_name
+}
+
+# Function to stop a service
+stop_service() {
+  read -p "Enter the service name:" service_name
+  sudo systemctl stop $service_name
+}
+
+# Function to restart a service
+restart_service() {
+  read -p "Enter the service name:" service_name
+  sudo systemctl restart $service_name
+}
+#Function to get the status of the service
+status_service(){
+  read -p "Enter the service name to restart:" service_name
+  systemctl status $service_name
+}
+# Main menu
+echo "Select an option:"
+echo "1) Run a Docker container"
+echo "2) Start a service"
+echo "3) Stop a service"
+echo "4) Restart a service"
+echo "5) Status of the service"
+
+read option
+
+case $option in
+  1)
+    run_container
+    ;;
+  2)
+    start_service
+    ;;
+  3)
+    stop_service
+    ;;
+  4)
+    restart_service
+    ;;
+  5)
+   status_service
+   ;;
+  *)
+    echo "Invalid option"
+    ;;
+esac
+
