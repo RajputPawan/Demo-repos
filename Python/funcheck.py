@@ -24,3 +24,7 @@ print(len(a))
 #loop
 for x in "Papaya":
       print(x)
+
+
+
+      
